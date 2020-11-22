@@ -1,7 +1,7 @@
 <?php
 // https://projecteuler.net/problem=1
 
-class Solution
+class p1
 {
   public function problem($n)
   {
@@ -15,5 +15,5 @@ class Solution
   }
 }
 
-$solution = new Solution();
+$solution = new p1();
 echo $solution->problem(1000);
