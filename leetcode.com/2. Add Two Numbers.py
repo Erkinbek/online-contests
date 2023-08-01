@@ -15,21 +15,41 @@ https://github.com/Erkinbek/online-contests
 
 """
 
-l1 = [2, 4, 3]
-l2 = [5, 6, 4]
 
-number1 = ""
-number2 = ""
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        # Helper function to create a linked list from a list of digits
+        def create_linked_list_from_list(lst):
+            dummy_head = ListNode()
+            current = dummy_head
+            for digit in lst:
+                current.next = ListNode(digit)
+                current = current.next
+            return dummy_head.next
 
-for x in l1:
-    number1 = number1 + str(x)
+        # Convert the linked lists to lists of digits
+        number1 = []
+        while l1:
+            number1.append(l1.val)
+            l1 = l1.next
 
-for x in l2:
-    number2 = number2 + str(x)
+        number2 = []
+        while l2:
+            number2.append(l2.val)
+            l2 = l2.next
 
-number3 = str(int(number1) + int(number2))
+        # Calculate the sum as lists of digits
+        carry = 0
+        result = []
+        i, j = 0, 0
+        while i < len(number1) or j < len(number2) or carry:
+            num1 = number1[i] if i < len(number1) else 0
+            num2 = number2[j] if j < len(number2) else 0
+            total = num1 + num2 + carry
+            carry = total // 10
+            result.append(total % 10)  # Append at the end
+            i += 1
+            j += 1
 
-output = []
-
-for i in reversed(number3):
-    output.append(i)
+        # Create the resultant linked list
+        return create_linked_list_from_list(result)
