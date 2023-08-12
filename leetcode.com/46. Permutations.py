@@ -7,6 +7,10 @@ https://leetcode.com/problems/permutations/
 Erkin Pardayev 12.08.2023
 https://github.com/Erkinbek/online-contests
 """
+# You can remove this line
+from typing import List
+
+
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         if len(nums) <= 1:
